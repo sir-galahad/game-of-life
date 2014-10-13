@@ -1,0 +1,10 @@
+This code is so simple it should compile on any Linux box (i suspect any unix
+box even) that has the ncurses-dev package and make installed. simply typing 
+
+make in the source directory should build it
+
+there's a commented option in display.c that you can uncomment before building
+to allow game of life to show live cells as random characters, i think this 
+looks more visually appealing if you're a fan of the matrix, however some
+of the random charcters are interpreted as too characters by the terminal
+which looks a little jittery.
