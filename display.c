@@ -26,10 +26,13 @@ assume_default_colors(COLOR_GREEN,COLOR_BLACK);
 clear();
 gol_set_default_rules();
 cgrid=create_cellgrid(LINES-2,COLS-1);
-generate_random_cells(cgrid);
+//generate_random_cells(cgrid);
+generate_pulsar(cgrid);
+draw_blinker(cgrid,20,20,TRUE);
 while(1)
 {
 draw_cells(cgrid);
+//getch();
 gol_do_iteration(&cgrid);
 
 if(cgrid->iteration%5==0){
@@ -37,7 +40,9 @@ if(cgrid->iteration%5==0){
 	sleep(2);
 	free_cellgrid(cgrid);
 	cgrid=create_cellgrid(LINES-2,COLS-1);
+
 	generate_random_cells(cgrid);	
+	//generate_pulsar(cgrid);
 	}
 }
 

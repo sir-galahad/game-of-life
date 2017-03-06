@@ -182,12 +182,13 @@ void gol_do_iteration(cellgrid **cgrid)
 	(*cgrid)=newgrid;
 	newgrid->prev=oldgrid;
 	
-	//delete 5th previous iteration
+	//delete 7th previous iteration
 	x=0;
 	while(newgrid->prev!=NULL)
 	{
 		x++;
-		if(x==5){
+		//printf("%d\n",x);
+		if(x==7){
 			free_cellgrid(newgrid->prev);
 			newgrid->prev=NULL;
 			break;
@@ -222,6 +223,41 @@ for(x=0;x<=cgrid->max_x;x++){
 	}
 }
 }
+void generate_pulsar(cellgrid *cgrid)
+{
+draw_blinker(cgrid,2,0,TRUE);
+draw_blinker(cgrid,0,2,FALSE);
+draw_blinker(cgrid,5,2,FALSE);
+draw_blinker(cgrid,2,5,TRUE);
+//draw_blinker(cgrid,6,2,FALSE);
+//draw_blinker(cgrid,2,6,TRUE);
+draw_blinker(cgrid,0,8,FALSE);
+draw_blinker(cgrid,8,0,TRUE);
+draw_blinker(cgrid,7,2,FALSE);
+draw_blinker(cgrid,2,7,TRUE);
+draw_blinker(cgrid,8,5,TRUE);
+draw_blinker(cgrid,5,8,FALSE);
+draw_blinker(cgrid,2,12,TRUE);
+draw_blinker(cgrid,12,2,FALSE);
+draw_blinker(cgrid,7,8,FALSE);
+draw_blinker(cgrid,8,7,TRUE);
+draw_blinker(cgrid,8,12,TRUE);
+draw_blinker(cgrid,12,8,FALSE);
+
+}
+void draw_blinker(cellgrid *cgrid,int x,int y,int horizontal)
+{
+int n;
+for(n=0;n<3;n++)
+{
+	set_cell(cgrid,x,y,TRUE);
+	if(horizontal){	
+	x++;
+	}else{
+		y++;
+	}
+}
+}
 int gol_is_repeating(cellgrid *cgrid)
 {
 cellgrid *tmpgrid;
@@ -231,8 +267,10 @@ columns=cgrid->max_x+1;
 lines=(cgrid->max_y/8)+1;
 gridsize=columns*lines;
 tmpgrid=cgrid->prev;
-
+int x=0;
 for(;tmpgrid!=NULL;tmpgrid=tmpgrid->prev){
+	x++;
+	//printf("%d\n",x);
 	if(memcmp(cgrid->grid[0],tmpgrid->grid[0],gridsize)==0){
 		return TRUE;
 	}

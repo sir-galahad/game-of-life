@@ -26,6 +26,8 @@ void gol_set_rules(int *cellsneededtolive, int *cellsneededtospawn);
 void gol_set_default_rules();
 void gol_do_iteration(cellgrid **cgrid);
 void print_cellgrid(cellgrid *cgrid);
+void draw_blinker(cellgrid *cgrid,int x, int y,int horizontal);
+void generate_pulsar(cellgrid *cgrid);
 void generate_random_cells(cellgrid *cgrid);
 int gol_is_repeating(cellgrid *cgrid);
 #endif //define LIFE_LIB
