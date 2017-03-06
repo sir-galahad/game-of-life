@@ -26,9 +26,7 @@ assume_default_colors(COLOR_GREEN,COLOR_BLACK);
 clear();
 gol_set_default_rules();
 cgrid=create_cellgrid(LINES-2,COLS-1);
-//generate_random_cells(cgrid);
-generate_pulsar(cgrid);
-draw_blinker(cgrid,20,20,TRUE);
+generate_random_cells(cgrid);
 while(1)
 {
 draw_cells(cgrid);
