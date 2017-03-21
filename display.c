@@ -4,7 +4,7 @@
 #include"lifelib.h"
 
 //uncomment below to use random characters to define live cells
-//#define RANDOMCHAR 
+//#define RANDOMCHAR 1
 void draw_cells(cellgrid *cgrid);
 void microsleep(int micros);
 int random_char(void);
@@ -14,6 +14,7 @@ char livecellchar='O';
 int main(int argc, char**argv)
 {
 cellgrid *cgrid;
+cellgrid *tmpgrid;
 //*initialize program
 initscr();
 start_color();
@@ -39,7 +40,7 @@ if(cgrid->iteration%5==0){
 	free_cellgrid(cgrid);
 	cgrid=create_cellgrid(LINES-2,COLS-1);
 
-	generate_random_cells(cgrid);	
+	generate_random_cells(cgrid);
 	//generate_pulsar(cgrid);
 	}
 }

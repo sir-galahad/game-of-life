@@ -35,9 +35,13 @@ cellgrid *create_cellgrid(int max_x, int max_y)
 void free_cellgrid(cellgrid *oldgrid)
 {
 	int x;
+        if(oldgrid==NULL) return;
+
+        free_cellgrid(oldgrid->prev);
 	free(oldgrid->grid[0]);
 	free(oldgrid->grid);	
 	free(oldgrid);
+        
 }//end free_cellgrid
 
 void set_cell(cellgrid *cgrid,int xloc,int yloc,int value)
@@ -189,6 +193,10 @@ void gol_do_iteration(cellgrid **cgrid)
 		x++;
 		//printf("%d\n",x);
 		if(x==7){
+                        if(newgrid->prev->prev!=NULL)
+                        {
+                            free_cellgrid(newgrid->prev->prev);
+                        }
 			free_cellgrid(newgrid->prev);
 			newgrid->prev=NULL;
 			break;

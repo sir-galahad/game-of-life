@@ -1,13 +1,13 @@
 
 
 life : lifelib.o display.o
-	gcc lifelib.o display.o -lncurses -o life
+	gcc -g lifelib.o display.o -lncurses -o life
 
 display.o : display.c
-	gcc display.c -c -o display.o
+	gcc display.c -c -g -o display.o
 
 lifelib.o : lifelib.c
-	gcc lifelib.c -c -o lifelib.o
+	gcc lifelib.c -c -g -o lifelib.o
 
 clean :
 	rm life
